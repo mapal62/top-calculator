@@ -1,0 +1,51 @@
+@font-face {
+    font-family: Segment7Standard;
+    src: url(font/Segment7Standard.otf) format("opentype");
+}
+body {
+    background-color: aquamarine;
+}
+section {
+    width: 85vmin;
+    max-width: 550px;
+    margin: 0 auto;
+/* max-height: 100vh; */
+}
+#base {
+    width: 100%;
+    aspect-ratio: 600 / 720;
+    background-image: url('./image/calculator.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 14% 0 0 8%;
+}
+
+#display {
+    font-family: Segment7Standard;
+    background-color: rgba(137, 43, 226, 0.1);
+    width: 80%;
+    height: 20%;
+    margin-bottom: 13%;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    font-size: min(10vw, 7.5vh);
+
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+.row {
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+
+}
+.key {
+    width: 22%;
+    aspect-ratio: 1.2;
+    background-color: rgba(0, 0, 255, 0.1);
+    font-size: 1px;
+}
