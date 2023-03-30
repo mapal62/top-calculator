@@ -1,6 +1,14 @@
 console.log('RUNNING');
+const minimal = document.querySelector('input');
+minimal.addEventListener('change', switchDesign);
 
-const screen = document.getElementById('display');
+const screen = document.querySelector('#display');
+screen.addEventListener('click', () => {
+    result = 0;
+    prevOperation = '=';
+    displayString = '';
+    display();
+})
 const keys = document.querySelectorAll('.key');
 keys.forEach((key) => { key.addEventListener('click', keyPressed) });
 let result = 0;
@@ -23,7 +31,7 @@ function keyPressed(e) {
             operation = whichKey;
             calculate(operation);
         } else {
-            if (displayString.length < 12) {
+            if (displayString.length < 11) {
                 displayString = displayString.concat(whichKey);
             }
             if (displayString === '-0') displayString = displayString.concat('.');
@@ -57,7 +65,7 @@ function calculate(operation) {
     displayString = '';
     display()
     if (operation === '=') {
-        screen.innerText = String(result).slice(0, 12);
+        screen.innerText = String(result).slice(0, 11);
     }
 }
 
@@ -66,5 +74,18 @@ function display() {
         screen.innerText = '0';
     } else {
         screen.innerText = displayString;
+    }
+}
+
+function switchDesign(e){
+    const draw = document.getElementById('base');
+    console.log('CHANGE', this.checked, draw);
+    console.dir(draw);
+    if (this.checked) {
+        draw.style.backgroundImage = 'none';
+        document.documentElement.style.setProperty('--visible', 'rgb(5, 5, 5)');
+    } else {
+         draw.style.backgroundImage = '';
+        document.documentElement.style.setProperty('--visible', 'rgba(5, 5, 5, 0.01)');
     }
 }
