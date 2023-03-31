@@ -17,7 +17,6 @@ let displayString = '';
 display();
 function keyPressed(e) {
     const whichKey = this.innerText
-    console.log(whichKey);
     if (displayString === '' && result === 0) {
         if (['/', '+', 'X', '='].includes(whichKey)) {
             screen.innerText = 'NOT VALID';
@@ -32,7 +31,10 @@ function keyPressed(e) {
             calculate(operation);
         } else {
             if (displayString.length < 11) {
-                displayString = displayString.concat(whichKey);
+                if (whichKey === '.') {
+                    if (!displayString.includes('.'))
+                        displayString = displayString.concat(whichKey);
+                } else displayString = displayString.concat(whichKey);
             }
             if (displayString === '-0') displayString = displayString.concat('.');
             display();
@@ -44,24 +46,25 @@ function calculate(operation) {
     const operand = Number(displayString);
     if (prevOperation === '+') {
         result += operand;
-        prevOperation = operation;
+        console.log(prevOperation, result);
     }
     if (prevOperation === '-') {
         result -= operand;
-        prevOperation = operation;
+        console.log(prevOperation, result);
     }
     if (prevOperation === 'X') {
         result *= operand;
-        prevOperation = operation;
+        console.log(prevOperation, result);
     }
     if (prevOperation === '/') {
         result /= operand;
-        prevOperation = operation;
+        console.log(prevOperation, result);
     }
-    if (prevOperation === '=' && operation != '=') {
+    if (prevOperation === '=' && operation !== '=') {
         result += operand;
-        prevOperation = operation;
+        console.log(prevOperation, result);
     }
+    prevOperation = operation;
     displayString = '';
     display()
     if (operation === '=') {
@@ -77,7 +80,7 @@ function display() {
     }
 }
 
-function switchDesign(e){
+function switchDesign(e) {
     const draw = document.getElementById('base');
     console.log('CHANGE', this.checked, draw);
     console.dir(draw);
@@ -85,7 +88,7 @@ function switchDesign(e){
         draw.style.backgroundImage = 'none';
         document.documentElement.style.setProperty('--visible', 'rgb(5, 5, 5)');
     } else {
-         draw.style.backgroundImage = '';
+        draw.style.backgroundImage = '';
         document.documentElement.style.setProperty('--visible', 'rgba(5, 5, 5, 0.01)');
     }
 }

@@ -9,7 +9,7 @@ body {
     background-color: aquamarine;
 }
 section {
-    width: 80vmin;
+    width: 72vmin;
     max-width: 550px;
     margin: 0 auto;
     border: 2px solid var(--visible);
@@ -23,7 +23,7 @@ section {
     background-image: url('./image/calculator.png');
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 13% 0 0 8%;
+    padding: 13% 0 0 5%;
 }
 span {
     position: absolute;
@@ -31,8 +31,9 @@ span {
     right: 25%;
     font-size: min(4vw, 2.5vh) ;
     font-family: 'Courier New', Courier, monospace;
-    color: grey;
+    color: black;
 }
+
 label {
      font-size: min(4vw, 2.5vh) ;
     font-family: 'Courier New', Courier, monospace;
@@ -40,32 +41,36 @@ label {
 }
 #display {
     background-color: rgba(137, 43, 226, 0.1);
-    width: 80%;
+    width: 82%;
     height: 22%;
-    margin-bottom: 11%;
+    margin-bottom: 9%;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     font-family: Segment7Standard;
     font-size: min(9.5vw, 9.2vh);
-    text-align: right;
+    transform: scale(0.96,1.2);
     border: 2px solid var(--visible);
     border-radius: 15%;
 }
 .row {
-    width: 76%;
+    margin-left: 3%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3.5%;
+    margin-bottom: 3%;
 }
 .key {
     box-sizing: border-box;
     width: 22%;
-    aspect-ratio: 1.5;
+    aspect-ratio: 3 / 2;
     background-color: rgba(0, 0, 255, 0.1);
     font-size: min(8vw, 8vh);
     color: var(--visible);
     text-align: center;
     border: 2px solid var(--visible);
     border-radius: 15%;
+}
+.key::selection {
+    background-color: rgba(127, 255, 212, 0);
 }
